@@ -1,0 +1,133 @@
+[
+  {
+    "title": "Predicting Tourism Demand in Indonesia Using Google Trends Data",
+    "authors": [
+      "Atika Nashirah Hasyyati",
+      "Rina Indriani",
+      "Titi Kanti Lestari"
+    ],
+    "summary": "  Tourism data is one of the strategic data in Indonesia. In addition, tourism\nis one of the ten priority programs of national development planning in\nIndonesia. BPS-Statistics Indonesia has collected data related to tourism\ndemand in Indonesia, but these data have different time period. Several data\ncan be provided monthly, while the other data can be provided annually.\nHowever, accurate and real time tourism data are needed for effective policy\nmaking. In this era, all of information about tourism destination or\naccommodation can be gotten easily through internet, especially information\nfrom Google search engine, such as information about tourism places, flights,\nhotels, and ticket for tourism attractions. Since 2004, Google has provided the\ninformation of user behavior through Google Trends tool. This paper aims to\nanalyze and compare the patterns of tourism demand in Indonesia from Google\nTrends data with tourism statistics from BPS-Statistics Indonesia. In order to\nunderstand tourism demand in Indonesia, we used Google Trends data on a set of\nqueries related to tourism. This paper shows that the search intensity of\nrelated queries provides the pattern of predicted tourism demand in Indonesia.\nWe evaluated the prediction result by comparing several time series models.\nFurthermore, we compared and correlated the Google Trends data with official\ndata. The result shows that Google Trends data and tourism statistics have\nsimilar pattern when there were disasters. The result also shows that Google\nTrends data has correlation with official data and produced accurate prediction\nof tourism demand in Indonesia. Therefore, Google Trends data can be used to\npredict and understand the pattern of tourism demand in Indonesia.\n",
+    "date": "2022-11-25T07:40:38Z",
+    "link": "http://arxiv.org/pdf/2211.13938v1",
+    "source": "arXiv"
+  },
+  {
+    "title": "Impacts of the Madden Julian Oscillation on Precipitation Extremes in\n  Indonesia",
+    "authors": ["Fadhlil R. Muhammad", "Sandro W. Lubis", "Sonni Setiawan"],
+    "summary": "  The influence of the Madden Julian Oscillation (MJO) on the precipitation\nextremes in Indonesia during the rainy season (October to April) has been\nevaluated using the daily station rain gauge data and the gridded Asian\nPrecipitation Highly Resolved Observational Data Integration Toward Evaluation\nof Water Resources (APHRODITE) from 1987 to 2017 for different phases of the\nMJO. The results show that MJO significantly modulates the frequency of extreme\nprecipitation events in Indonesia, with the magnitude of the impact varying\nacross regions. Specifically, the convectively active (suppressed) MJO\nincreases (decreases) the probability of extreme precipitation events over the\nwestern and central parts of Indonesia by up to 70% (40%). In the eastern part\nof Indonesia, MJO increases (decreases) extreme precipitation probability by up\nto 50% (40%). We attribute the differences in the probability of extreme\nprecipitation events to the changes in the horizontal moisture flux convergence\ninduced by MJO. The results indicate that the MJO provides the source of\npredictability of daily extreme precipitation in Indonesia.\n",
+    "date": "2020-07-21T03:02:46Z",
+    "link": "http://arxiv.org/pdf/2007.10574v1",
+    "source": "arXiv"
+  },
+  {
+    "title": "A New Prediction of Daily Number of New Cases and Total Number Infected\n  for nCOVID-19 Plague Infections In Indonesia with the Modification of the\n  Bernoulli Differential Equation",
+    "authors": ["Valentinus Galih Vidia Putra", "Juliany Ningsih Mohamad"],
+    "summary": "  The application of differential equations is commonly used in mathematics and\nphysics, as well as various other sciences to explain a phenomenon in a system.\nThis paper explains the mathematical modeling in the analysis of the nCOVID-19\nplague in Indonesia on March 3, 2020, to April 19, 2020, with the modification\nof the Bernoulli equation and the simulation by MATLAB. In this study, it can\nbe concluded that it was found that the daily number of nCOVID-19 cases in\nIndonesia will have the highest case at a maximum of around 400 and the total\nnumber of positive nCOVID-19 in Indonesia will reach 12000 people with a quiet\nperiod in mid-June. In this modeling, it has also been found that the value of\nR2 = 0.9927 on the total number of positive nCOVID-19 in Indonesia taken from 3\nMarch 2020 to 19 April 2020, while the value of R2 = 0.807 daily number of\npositive new cases of nCOVID-19 in Indonesia taken from March 3, 2020, to April\n19, 2020. Based on this research, it can be shown that the nCOVID-19 model for\na case in the Indonesia plague is quite accurately compared by the real data.\n",
+    "date": "2020-04-28T02:13:29Z",
+    "link": "http://arxiv.org/pdf/2004.13243v1",
+    "source": "arXiv"
+  },
+  {
+    "title": "Carbon Footprint in Indonesia Plantation Sector: GHG Calculation for\n  Main Commodities",
+    "authors": [
+      "Lufaldy Ernanda",
+      "Jhon Pieter Sitanggang",
+      "Rini Setiyawati",
+      "Siti Wahyuni",
+      "Bimo Yudo Kristanto",
+      "Hafif Dafiqurrohman"
+    ],
+    "summary": "  Global warming has been changing the planet climate pattern. Carbon emission\nis one of the big potentials to push the greenhouse gas effect which\ncontributes to global warming. Indonesia has strengthened its climate\ncommitments through NDC with equitable emission reduction targets and\nstrengthened alignment between climate goals and country development goals. The\nMinistry of State Own Enterprise (SOE) deploys Plantation Company Holding, PTPN\nfor calculating detailed GHG emissions. PTPN is the largest plantation holding\ncompany in Indonesia with great potential in carbon credits in the carbon\nmarket. Currently, the GHG Calculator that can be applied is only RSPO and\nSugarcane, while the existing GHG Calculator commodities are not products from\nPTPN. In addition, for a specific country such as Indonesia, a special\ncalculator is needed that is adjusted to the ISO standard and the GHG Protocol\nand regulations that apply in Indonesia. Therefore, a GHG Calculator is needed\nthat can be used for multi-commodities in Indonesia, especially for commodities\nnative to Indonesia. The method used is based on ISO 14064 on GHG Emissions.\nThis study focuses on GHG assessment up to the harvesting of the crop (farm\ngate); that is, it covers GHG emissions from plantation production and the\nassociated inputs.\n",
+    "date": "2022-11-14T09:07:39Z",
+    "link": "http://arxiv.org/pdf/2212.01332v1",
+    "source": "arXiv"
+  },
+  {
+    "title": "Epidemiology Through Cellular Automata: Case of Study Avian Influenza in\n  Indonesia",
+    "authors": ["Hokky Situngkir"],
+    "summary": "  This paper performs the utilization of cellular automata computational\nanalysis as the dynamic model of spatial epidemiology. Here, explored\nelementary aspects of cellular automata and its application in analyzing\ncontagious disease, in this case avian influenza disease in Indonesia.\nComputational model is built and map-based simulation is performed using\nseveral simplified data of such transportation through sea in Indonesia, and\nits accordance with poultries in Indonesia, with initial condition of notified\navian influenza infected area in Indonesia. The initial places are Pekalongan,\nWest Java, East Java, and several regions in Sumatera. The result of simulation\nis showing the spreading-rate of influenza and in simple way and describing\npossible preventive action through isolation of infected areas as a major step\nof preventing pandemic.\n",
+    "date": "2004-03-17T16:24:05Z",
+    "link": "http://arxiv.org/pdf/nlin/0403035v1",
+    "source": "arXiv"
+  },
+  {
+    "title": "[PDF][PDF] Undang-Undang Republik Indonesia Nomor 20 Tahun 2003",
+    "authors": "PR Indonesia",
+    "summary": "Menimbang: a. bahwa dalam rangka untuk lebih memberikan keadilan dan meningkatkan \npelayanan kepada Wajib Pajak dan untuk lebih memberikan kepastian hukum serta …",
+    "date": "No publication date",
+    "link": "http://pics.unipma.ac.id/content/pengumuman/03103_30_05_2022_09_16_55TAHUN%202007%20UU%20KUP%20NO%2028.pdf",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[PDF][PDF] Kamus Bahasa Indonesia",
+    "authors": "TRKB Indonesia",
+    "summary": "Satu bahasa besar atau bahasa utama memiliki kamus, tata bahasa, dan uji bahasa yang \nstandar. Kamus memuat khazanah kosakata bahasa yang dapat menjadi lambang atau …",
+    "date": "No publication date",
+    "link": "https://www.academia.edu/download/40095831/Kamus_Bahasa_Indonesia.pdf",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[PDF][PDF] Undang-Undang Republik Indonesia Nomor 32 Tahun 2004 Tentang Pemerintahan Daerah",
+    "authors": "R Indonesia",
+    "summary": "Menimbang: a. bahwa dalam rangka penyelenggaraan pemerintahan daerah sesuai dengan \namanat Undang-Undang Dasar Negara Republik Indonesia Tahun 1945, pemerintahan …",
+    "date": "No publication date",
+    "link": "https://www.apbi-icma.org/uploads/files/old/2013/11/uu_32_-2004.pdf",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[BUKU][B] Tabel komposisi pangan Indonesia",
+    "authors": "PAG Indonesia",
+    "summary": "Nishing/KG-3/GC melanggar 1. Barang siapa dengan sengaja dan tanpa hak melakukan \nperbuatan sebagaimana dimaksud dalam Pasal 2 Ayat (1) atau Pasal 49 Ayat (1) dan Ayat (2) …",
+    "date": "No publication date",
+    "link": "https://books.google.com/books?hl=id&lr=&id=CklbDwAAQBAJ&oi=fnd&pg=PP1&dq=indonesia&ots=-ttMqhbKlY&sig=MfuKx6Oj7bhztqfqpv_wRpGOJxw",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "Laporan Perekonomian Indonesia 2021",
+    "authors": "BPS Indonesia",
+    "summary": "Wabah covid-19 ternyata tidak hanya berdampak pada kesehatan manusia saja tetapi juga \nberimbas pada kondisi perekonomian Negara. Kondisi di Indonesia sendiri apa yang sudah …",
+    "date": "No publication date",
+    "link": "https://opac.lib.unram.ac.id/index.php?p=show_detail&id=25957&keywords=",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[PDF][PDF] Statistical Yearbook of Indonesia 2002",
+    "authors": "S Indonesia",
+    "summary": "… Arrival of Foreign Tourists in Indonesia by Nationality, 1998 - 2002............................................. … \nThe Total Area and Number of Administrative Units by Province in Indonesia, 2002a0…",
+    "date": "No publication date",
+    "link": "https://seadelt.net/Asset/Source/Document_ID-7_No-01.pdf",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[BUKU][B] Banks in Indonesia",
+    "authors": "B Indonesia",
+    "summary": "FSR is published biannually with the objecives: To improve public insight in terms of \nunderstanding financial system stability. To evaluate potenial risks to financial system stability. To …",
+    "date": "No publication date",
+    "link": "https://centerforfinancialstability.org/fsr/idn_fsr_201509.pdf",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[PDF][PDF] UNDANG-UNDANG REPUBLIK INDONESIA NOMOR 2 TAHUN 2009 TENTANG",
+    "authors": "LPE INDONESIA",
+    "summary": "… Penjaminan bagi importir barang dan jasa Indonesia di luar negeri atas pembayaran \nyang telah diberikan atau akan diberikan kepada Eksportir Indonesia untuk pembiayaana0…",
+    "date": "No publication date",
+    "link": "https://upload.wikimedia.org/wikipedia/commons/2/21/Undang-Undang_Republik_Indonesia_Nomor_2_Tahun_2009.pdf",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[PDF][PDF] Undang-Undang Republik Indonesia Nomor 43 Tahun 2007 Tentang Perpustakaan",
+    "authors": "PNR Indonesia",
+    "summary": "Menimbang: a. bahwa dalam rangka mencerdaskan kehidupan bangsa sebagaimana \ndiamanatkan dalam Undang-Undang Dasar Negara Republik Indonesia Tahun 1945, …",
+    "date": "No publication date",
+    "link": "http://digilib.isi.ac.id/2667/1/UU-43-2007-PERPUSTAKAAN.pdf",
+    "source": "Google Scholar"
+  },
+  {
+    "title": "[PDF][PDF] Undang-Undang Dasar Negara Republik Indonesia 1945",
+    "authors": "PR Indonesia",
+    "summary": "Kemudian daripada itu untuk membentuk suatu Pemerintah Negara Indonesia yang \nmelindungi segenap bangsa Indonesia dan seluruh tumpah darah Indonesia dan untuk …",
+    "date": "No publication date",
+    "link": "http://repository.crmsindonesia.org/bitstream/123456789/172/1/UUD%201945.pdf",
+    "source": "Google Scholar"
+  }
+]
