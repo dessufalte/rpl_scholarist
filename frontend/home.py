@@ -8,13 +8,13 @@ import os
 class HomeScreen:
     def __init__(self, page: ft.Page):
         self.page = page
-        self.page.theme_mode = ft.ThemeMode.DARK  # Set default theme mode
+        self.page.theme_mode = ft.ThemeMode.DARK  
         self.page.theme = ft.Theme(color_scheme_seed=ft.colors.BLUE)
         self.page.dark_theme = ft.Theme(color_scheme_seed=ft.colors.PRIMARY)
         self.gradient_value = 0.0
         self.increasing = True
         self.searching = False
-        # AppBar
+
         self.app_bar = ft.AppBar(
             actions=[
                 ft.PopupMenuButton(
@@ -41,7 +41,6 @@ class HomeScreen:
                         ),
                     ],
                 ),
-                # IconButton untuk toggle theme
                 ft.IconButton(
                     icon=ft.icons.DARK_MODE,
                     on_click=self.toggle_theme,
@@ -67,11 +66,11 @@ class HomeScreen:
         height=4, 
         bgcolor=ft.colors.ON_SECONDARY
     ),visible=False,
-    bgcolor=ft.colors.TRANSPARENT,  # Warna latar belakang container
+    bgcolor=ft.colors.TRANSPARENT,
     padding=0,
     margin=0,
     alignment=ft.alignment.top_center,
-    expand=False,  # Agar ukurannya hanya sesuai dengan konten
+    expand=False,
         )
         self.description_container = ft.Container(
             content=ft.Column(
@@ -382,7 +381,6 @@ class HomeScreen:
         filtered_items = [item for item in self.checked_items if item['checkmark'].value is True]
         self.page.session.set("items_check",filtered_items)
         self.page.go("/bibliography")
-        # Navigasi ke halaman baru dengan daftar pustaka
         # self.show_bibliography(self.checked_items)
         
     def on_tap(self, e):
@@ -476,7 +474,6 @@ class HomeScreen:
         self.list_view.update()
 
     def toggle_theme(self, e):
-        # Mengubah theme mode berdasarkan nilai IconButton
         if self.page.theme_mode == ft.ThemeMode.LIGHT:
             self.page.theme_mode = ft.ThemeMode.DARK
             self.theme_icon.icon = ft.icons.DARK_MODE
