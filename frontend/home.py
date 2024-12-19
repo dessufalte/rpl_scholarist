@@ -2,6 +2,7 @@ import flet as ft
 from .backend import autocomplete, searcher
 import wikipediaapi as vikiped
 import json
+import time
 import os
 
 class HomeScreen:
@@ -51,8 +52,27 @@ class HomeScreen:
             
         )
 
-        # Container untuk deskripsi
-        
+        self.sort_button = ft.PopupMenuButton(
+            icon=ft.icons.SORT,
+            items=[
+                ft.PopupMenuItem(text="Sort by Title (Asc)", on_click=lambda e: self.sort_items("title", ascending=True)),
+                ft.PopupMenuItem(text="Sort by Title (Desc)", on_click=lambda e: self.sort_items("title", ascending=False)),
+                ft.PopupMenuItem(text="Sort by Date (Asc)", on_click=lambda e: self.sort_items("date", ascending=True)),
+                ft.PopupMenuItem(text="Sort by Date (Desc)", on_click=lambda e: self.sort_items("date", ascending=False)),
+            ],visible=False
+        )
+        self.loadingbar = ft.Container(
+    content=ft.ProgressBar(
+        width=self.page.width, 
+        height=4, 
+        bgcolor=ft.colors.ON_SECONDARY
+    ),visible=False,
+    bgcolor=ft.colors.TRANSPARENT,  # Warna latar belakang container
+    padding=0,
+    margin=0,
+    alignment=ft.alignment.top_center,
+    expand=False,  # Agar ukurannya hanya sesuai dengan konten
+        )
         self.description_container = ft.Container(
             content=ft.Column(
             [
@@ -66,7 +86,7 @@ class HomeScreen:
             visible=False,
         )
         self.suggestionlist = ft.Column()
-        # TextField untuk input
+
         self.input_field = ft.SearchBar(
             bar_hint_text="Cari..",
             on_tap= self.on_tap,
@@ -79,10 +99,10 @@ class HomeScreen:
         # IconButton untuk kirim pesan
         self.send_button = ft.IconButton(
             icon=ft.icons.SEND,
-            on_click=lambda e: self.go_search(self.input_field.value)  # Memastikan pemanggilan terjadi saat klik
+            on_click=lambda e: self.go_search(self.input_field.value)
         )
         self.buah = ["apple", "banana", "orange", "grape", "strawberry", "watermelon", "kiwi", "pineapple", "mango", "pear"]
-        # Baris untuk TextField dan IconButton
+        
         self.input_row = ft.Row(
             [
                 self.input_field,
@@ -98,7 +118,6 @@ class HomeScreen:
             auto_scroll=False,
             expand=True,
             visible=False,
-            
         )
         # MenuBar
         self.menu_bar = ft.MenuBar(
@@ -109,32 +128,20 @@ class HomeScreen:
             ]
         )
         self.deviders = ft.Divider(height=1)
-        # Membuat View
+
         self.confirm_button = ft.FloatingActionButton(
             icon=ft.icons.CHECK,
             text="Confirm",
             visible=False,
             on_click= self.navigate_to_bibliography, 
         )
+        self.item_count_text = ft.Text("Items: 0", italic=True, size=12, visible=False)
         self.status = ft.Row(
             alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
             controls=[
-                ft.IconButton(ft.icons.SORT),
-                # ft.Dropdown(
-                #     label="Filter by Category",
-                #     options=[
-                #         ft.dropdown.Option("All"),
-                #         ft.dropdown.Option("Category 1"),
-                #         ft.dropdown.Option("Category 2"),
-                #         ft.dropdown.Option("Category 3"),
-                #     ],
-                #     border=ft.InputBorder.NONE,
-                #     border_radius=20,
-                #     padding=ft.Padding(10,0,0,0)
-                # ),
-                ft.Text("items: 100", italic=True, size=12),
+                self.sort_button,
+                self.item_count_text, 
             ],
-            visible=False,
         )
         self.textcover = ft.Text("Mulailah Pencarian" , weight=ft.FontWeight.W_900, size=30)
         self.coverapp = ft.Column(
@@ -142,19 +149,23 @@ class HomeScreen:
                 ft.Row([self.textcover,ft.Icon(ft.icons.EXPLORE)], alignment=ft.MainAxisAlignment.CENTER, height=150)   
             ]
         )
-        self.manualplaceholder = ft.Container(ft.Column([ft.Icon(ft.icons.BOOK_ONLINE), ft.Text("Carilah kata kunci yang disesuaikan")], horizontal_alignment=ft.CrossAxisAlignment.CENTER), padding=20, expand=True, border_radius=20, bgcolor=ft.colors.SECONDARY_CONTAINER)
+        self.manualplaceholder1 = ft.Container(ft.Column([ft.Icon(ft.icons.BOOK_ONLINE), ft.Text("Carilah kata kunci yang disesuaikan")], horizontal_alignment=ft.CrossAxisAlignment.CENTER), padding=20, expand=True, border_radius=20, height=100 , bgcolor=ft.colors.SECONDARY_CONTAINER)
+        self.manualplaceholder2 = ft.Container(ft.Column([ft.Icon(ft.icons.LIST), ft.Text("Gunakan pembuatan daftar pustaka otomatis")], horizontal_alignment=ft.CrossAxisAlignment.CENTER), padding=20, expand=True, border_radius=20, height=100 , bgcolor=ft.colors.SECONDARY_CONTAINER)
+        self.manualplaceholder3 = ft.Container(ft.Column([ft.Icon(ft.icons.COMPUTER), ft.Text("Koneksikan ke word, json, dan simpan")], horizontal_alignment=ft.CrossAxisAlignment.CENTER), padding=20, expand=True, border_radius=20, height=100 ,  bgcolor=ft.colors.SECONDARY_CONTAINER)
         self.manual = ft.Row([
-            self.manualplaceholder,
-            self.manualplaceholder,
-            self.manualplaceholder,
-            ],alignment=ft.MainAxisAlignment.CENTER )
-        self.loadingbar = ft.Container(ft.ProgressRing(width=50, height=50),visible=False , alignment=ft.alignment.center, bgcolor=ft.colors.with_opacity(0.7, ft.colors.SECONDARY_CONTAINER), expand=True )
+            self.manualplaceholder1,
+            self.manualplaceholder2,
+            self.manualplaceholder3,
+            ], alignment=ft.MainAxisAlignment.CENTER)
+        
+        
         self.hiddendiv = ft.Divider(height=50, opacity=0)
         self.checked_items = []
         self.view = ft.View(
             "/",
             [   
                 self.app_bar,
+                
                 self.deviders,
                 self.loadingbar,
                 self.coverapp,
@@ -176,9 +187,36 @@ class HomeScreen:
         self.theme_icon = self.app_bar.actions[-1]
     def on_submit_searchbar(self, e):
         self.go_search(self.input_field.value.strip())
+    def start_search_process(self):
+       
+        self.loadingbar.value = 0
+        self.page.update()
+
+        total_steps = 10
+        for i in range(total_steps + 1):
+            time.sleep(0.02) 
+            self.loadingbar.value = i / total_steps
+            self.page.update()
+
+        self.loadingbar.value = 1
+        self.page.update()
+    def update_item_count(self):
+        item_count = len(self.list_view.controls)
+        self.item_count_text.value = f"Items: {item_count}"
+        self.item_count_text.update()
     def unfocus(self):
         self.input_field.close_view()
         self.input_field.will_unmount()
+    async def toggle_loading(self):
+        self.loadingbar.visible = not self.loadingbar.visible
+        await self.page.update()
+        
+    def sort_items(self, key, ascending=True):
+        """Sort item di list_view berdasarkan key tertentu."""
+        self.list_view.controls.sort(
+            key=lambda item: item.data[key], reverse=not ascending
+        )
+        self.page.update()
     def viki_search(self, query):
         wiki_wiki = vikiped.Wikipedia('scholarist (magnesiumsulfat04@gmail.com)', 'en')
         try:
@@ -186,11 +224,12 @@ class HomeScreen:
             
             if page.exists():
                 title_page = page.title
-                description = page.summary 
+                description = page.summary
+                page_url = f"https://en.wikipedia.org/wiki/{title_page.replace(' ', '_')}" 
                 self.description_container.content = ft.Column([
                     ft.Text(title_page, weight=ft.FontWeight.W_100 ,size=20),
                     ft.Text(description, max_lines=8, overflow=ft.TextOverflow.ELLIPSIS),
-                    ft.ElevatedButton("Selengkapnya")
+                    ft.ElevatedButton("Selengkapnya", on_click=lambda e: self.page.launch_url(page_url))
                 ], horizontal_alignment=ft.CrossAxisAlignment.STRETCH)
                 
                 self.description_container.visible = True 
@@ -259,7 +298,14 @@ class HomeScreen:
             is_expanded = not is_expanded
             desc_text.max_lines = None if is_expanded else 3
             desc_text.update()  
-            
+        metadata = {
+            "title": title,
+            "authors": authors,
+            "summary": summary,
+            "date": date,
+            "source": source,
+            "link": link,
+        }
         return ft.Container(
             content=ft.Column(
                 [
@@ -269,6 +315,7 @@ class HomeScreen:
                             title_text
                         ]
                     ),
+                    ft.Text(f"Date: {date}", size=12, italic=True, color=ft.colors.SECONDARY), 
                     author_rows,
                     desc_text,
                     ft.Row(
@@ -297,7 +344,8 @@ class HomeScreen:
             bgcolor=ft.colors.ON_SECONDARY,
             border_radius=10,
             alignment=ft.alignment.center, 
-            on_click=toggle_desc_text
+            on_click=toggle_desc_text,
+            data=metadata
         )
     # def show_bibliography(self, checked_items):
     #     bibliography_page = ft.Page()
@@ -385,12 +433,14 @@ class HomeScreen:
         self.coverapp.visible = False
         self.manual.visible = False
         self.hiddendiv.visible = False
-        self.loadingbar.visible = True
+        self.loadingbar.visible=True
+        self.loadingbar.update()
         # file_path = os.path.join(os.getcwd(), "frontend/test.json")
         # print(file_path)
         
         # with open(file_path, 'r') as file:
         #     papers = json.load(file)
+        # self.toggle_loading()
         papers = searcher.run_smart_searching(query)
         if papers:
             items = [
@@ -405,13 +455,20 @@ class HomeScreen:
                 for paper in papers
             ]
             self.list_view.controls = items
+        self.update_item_count()
         self.viki_search(query)
+        self.sort_button.visible = True
         self.loadingbar.visible = False
         self.description_container.visible = True
         self.status.visible = True
         self.list_view.visible = True
+        self.item_count_text.visible = True
         self.searching = True
+        self.loadingbar.visible=False
+        self.loadingbar.update()
         self.coverapp.update()
+        self.sort_button.update()
+        self.item_count_text.update()
         self.description_container.update()
         self.manual.update()
         self.hiddendiv.update()

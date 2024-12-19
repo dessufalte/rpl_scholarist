@@ -4,10 +4,10 @@ from .backend.dbmanager import save_to_database
 from .backend.json_exporter import save_configuration
 
 def bibliography_screen(page: ft.Page, filtered_items):
-    # Membuat daftar pustaka menggunakan ListView
+
     bibliography_list = ft.ListView(spacing=10)
     format_bibl = "IEEE"
-    # Elemen teks untuk menampilkan daftar pustaka yang diformat
+
     formatted_view = ft.Text(value="", expand=True )
     def show_save_popup():
         def confirm_save(e):
@@ -42,7 +42,7 @@ def bibliography_screen(page: ft.Page, filtered_items):
         )
         page.dialog.open = True
         page.update()
-    # Fungsi ekspor ke berbagai format
+
     def export_to(format_type):
         if filtered_items:
             if format_type == "Word":
@@ -66,7 +66,6 @@ def bibliography_screen(page: ft.Page, filtered_items):
             )
         page.update()
 
-    # Menu bar untuk ekspor file
     menu_bar = ft.MenuBar(
         [
             ft.MenuItemButton(ft.Text("To Word"), on_click=lambda _: export_to("Word")),
@@ -81,7 +80,7 @@ def bibliography_screen(page: ft.Page, filtered_items):
         expand=True,
     )
 
-    # Fungsi untuk memperbarui tampilan daftar pustaka yang diformat
+
     def update_formatted_view(format_choice):
         if filtered_items:
             if format_choice == "IEEE":
@@ -102,15 +101,15 @@ def bibliography_screen(page: ft.Page, filtered_items):
                     f"{', '.join(item['authors'])}. \"{item['title']}\". {item['source']}, {item['date'][:10]}. <{item['link']}>."
                     for item in filtered_items
                 ]
-            # Gabungkan daftar pustaka yang diformat menjadi satu string
+
             formatted_view.value = "\n".join(formatted_items)
         else:
-            # Tampilkan pesan jika tidak ada data
+
             formatted_view.value = "Tidak ada data pustaka tersedia."
         if formatted_view.page:
             formatted_view.update()
 
-    # Fungsi untuk menghapus item dari daftar pustaka
+
     def remove_bibliography(item):
         filtered_items.remove(item)
         if filtered_items:
@@ -127,7 +126,7 @@ def bibliography_screen(page: ft.Page, filtered_items):
                 for it in filtered_items
             ]
         else:
-            # Tampilkan pesan jika daftar menjadi kosong
+ 
             bibliography_list.controls = [
                 ft.Text("Tidak ada data pustaka tersedia.", color=ft.colors.ON_SECONDARY, size=16)
             ]
@@ -136,7 +135,7 @@ def bibliography_screen(page: ft.Page, filtered_items):
 
         update_formatted_view(selected_format.value)
 
-    # Inisialisasi daftar pustaka
+
     if filtered_items:
         for item in filtered_items:
             bibliography_list.controls.append(
@@ -155,12 +154,12 @@ def bibliography_screen(page: ft.Page, filtered_items):
                 )
             )
     else:
-        # Tampilkan pesan jika data kosong sejak awal
+
         bibliography_list.controls.append(
             ft.Text("Tidak ada data pustaka tersedia.", color=ft.colors.GREY, size=16)
         )
 
-    # Format referensi yang dipilih (default: IEEE)
+
     selected_format = ft.Text(value="IEEE")
     def update_bibliography_list():
         bibliography_list.controls = [
@@ -196,11 +195,10 @@ def bibliography_screen(page: ft.Page, filtered_items):
                 error_text.update()
 
         def cancel_reorder(e):
-            # Menutup dialog saat "Batalkan" ditekan
+
             page.dialog.open = False
             page.update()
 
-        # Dialog untuk reorder
         error_text = ft.Text(value="", color=ft.colors.RED)
         new_position_field = ft.TextField(label="Posisi Baru", keyboard_type=ft.KeyboardType.NUMBER)
 
@@ -216,7 +214,7 @@ def bibliography_screen(page: ft.Page, filtered_items):
         page.dialog.open = True
         page.update()
 
-    # NavigationBar untuk memilih format referensi
+
     format_navigation_bar = ft.NavigationBar(
         destinations=[
             ft.NavigationBarDestination(icon=ft.icons.TEXT_FORMAT, label="APA"),
@@ -229,7 +227,6 @@ def bibliography_screen(page: ft.Page, filtered_items):
         ),
     )
 
-    # Perbarui tampilan awal daftar pustaka yang diformat
     update_formatted_view(selected_format.value)
 
     return ft.View(
@@ -237,7 +234,7 @@ def bibliography_screen(page: ft.Page, filtered_items):
         [
             ft.AppBar(title=ft.Text("References Manager"), bgcolor=ft.colors.SURFACE_VARIANT),
 
-            # Daftar pustaka
+
             ft.Column(
                 [
                     ft.Text("Daftar Pustaka", size=20, weight=ft.FontWeight.BOLD),
@@ -245,7 +242,6 @@ def bibliography_screen(page: ft.Page, filtered_items):
                 ],
             ),
 
-            # Viewer untuk daftar pustaka yang diformat
             ft.Column(
                 [
                     ft.Text("Preview Daftar Pustaka", size=20, weight=ft.FontWeight.BOLD),

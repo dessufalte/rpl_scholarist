@@ -1,7 +1,7 @@
 import flet as ft
 
 def settings_screen(page: ft.Page):
-    # Fungsi untuk menangani klik pada item menu
+
     def on_menu_click(item):
         if item == "Change Theme":
             page.theme_mode = (
@@ -9,11 +9,12 @@ def settings_screen(page: ft.Page):
             )
             page.update()
         elif item == "Help":
-            ft.dialog_alert(page, title="Help", content="This is the Help section.")
+            page.go("/help")
         elif item == "About":
-            ft.dialog_alert(page, title="About", content="Settings screen for the application.")
+            page.go("/about")
+        elif item == "API":
+            page.go("/api_key")
 
-    # Membuat daftar menu menggunakan ListTile
     menu_items = [
         ft.ListTile(
             leading=ft.Icon(ft.icons.BRIGHTNESS_6),
@@ -28,12 +29,7 @@ def settings_screen(page: ft.Page):
         ft.ListTile(
             leading=ft.Icon(ft.icons.KEY),
             title=ft.Text("API Key"),
-            on_click=lambda _: on_menu_click("About"),
-        ),
-        ft.ListTile(
-            leading=ft.Icon(ft.icons.DATA_ARRAY),
-            title=ft.Text("Data"),
-            on_click=lambda _: on_menu_click("About"),
+            on_click=lambda _: on_menu_click("API"),
         ),
         ft.ListTile(
             leading=ft.Icon(ft.icons.INFO_OUTLINE),

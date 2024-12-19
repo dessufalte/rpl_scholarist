@@ -3,10 +3,10 @@ import flet as ft
 from .backend.dbmanager import remove_table, load_tables_from_database, load_from_database
 
 def history_screen(page: ft.Page):
-    # Load the list of tables from the database
+
     table_names = load_tables_from_database()
 
-    # Membuat daftar tabel menggunakan ListView
+
     table_list = ft.ListView(expand=True, spacing=10, padding=10)
     def load_data(name):
         filtered_items = load_from_database(name)
@@ -18,7 +18,6 @@ def history_screen(page: ft.Page):
         remove_table(name)
         table_names = load_tables_from_database()
         table_list.update()
-    # Menambahkan setiap tabel ke ListView
     for table_name in table_names:
         table_list.controls.append(
             ft.ListTile(
