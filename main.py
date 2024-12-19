@@ -5,7 +5,9 @@ from frontend.settings import settings_screen
 from frontend.history import history_screen
 from frontend.home import HomeScreen
 from frontend.biblio import bibliography_screen
-
+from frontend.help import help_screen
+from frontend.api_key import api_key_screen
+from frontend.about import about_screen
 
 def main(page: ft.Page):
     page.title = "Scholarist"
@@ -19,6 +21,12 @@ def main(page: ft.Page):
             page.views.append(settings_screen(page))
         elif page.route == "/history":
             page.views.append(history_screen(page))
+        elif page.route == "/help":
+            page.views.append(help_screen(page))
+        elif page.route == "/about":
+            page.views.append(about_screen(page))
+        elif page.route == "/api_key":
+            page.views.append(api_key_screen(page))
         elif page.route == "/bibliography":
             items_check = page.session.get("items_check")
             if items_check is None:
